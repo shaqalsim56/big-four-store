@@ -7,6 +7,7 @@
     --black: #000;
     --white: #fff;
     --gray: #d3d3d3;
+    --gold: #FFD700;
 }
 
 .topnav{
@@ -43,8 +44,30 @@
 }
 
 .categories a:hover{
-    background-color: var(--white);
-    padding: 2px;
+    font-weight: 600;
+}
+
+/* Men/ Women's Section Container */
+.mens-womens-container{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 
+
+.mens-womens-container img{
+    width: 49.5%; /* Adjust the width as needed */
+    transition: all 0.5s;
+    cursor: pointer;
+
+}
+
+.mens-womens-container img:hover{
+    transform:scale(1.05)
+}
