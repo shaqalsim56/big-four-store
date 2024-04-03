@@ -13,7 +13,7 @@
 .topnav{
     border: 1px solid gray;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .topnav img{
-    width: 20%;
+    width: 15%;
 }
 
 .categories{
@@ -70,4 +70,131 @@
 
 .mens-womens-container img:hover{
     transform:scale(1.05)
+}
+
+
+/* LOGIN & REGISTER PAGE STYLING */
+.form-section{
+    /* border: 2px solid green; */
+    margin: 15px;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form input{
+    margin-top: 15px;
+    width: 90%;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid var(--gray);
+
+}
+
+form select{
+    margin-top: 15px;
+}
+
+.header-title {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 5px;
+    font-size: 30px;
+}
+
+.full-admin-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .admin-logo{
+    /* border: 2px solid red; */
+    width: 20%;
+    margin: auto;
+    display: flex;
+  }
+
+  .admin-logo img{
+    width: 100%;
+  }
+  
+  .error-container{
+    /* border: 2px solid green; */
+    margin-left: -45px;
+    margin-top: 15px;
+  }
+
+  .crud-container{
+    /* border: 2px solid red; */
+    width: 90%;
+    margin: auto;
+  }
+
+  .crud-container img{
+    width: 100%;
+    margin-top: 20px;
+   margin-bottom: 10px;
+   transition: all 1s;
+  }
+
+  .crud-container img:hover{
+    transform:scale(1.05)
+  }
+
+.form-group img{
+    width: 20%;
+}
+
+
+.form-group{
+    /* border: 2px solid red; */
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.form-group textarea{
+    margin: auto;
+    text-align: center;
+    margin-left: -70px;
+}
+
+.form-group option{
+    text-align: center;
+}
+
+#league{
+    width: 30%;
+}
+
+/* Tabular Styling */
+table{
+    width: 100%;
+}
+
+table, td{
+    border-collapse: collapse;
+    border: 2px solid #000;
+    padding: 5px 9px;
+    text-align: center;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.hdr-cell{
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.actions a{
+    margin-top: 10px;
+    margin: 5px;
 }

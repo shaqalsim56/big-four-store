@@ -1,0 +1,41 @@
+<%- include('../../partials/header-admin'); %>
+<a href="/admin-nfl/add-nfl-product">Add New NFL Product</a>
+<% if(data.length > 0) {%>
+    <table>
+        <!---------- Column Name  ---------->
+        <tr class="table_names">
+            <td class="hdr-cell">ID</td>
+            <td class="hdr-cell">League</td>
+            <td class="hdr-cell">Team</td>
+            <td class="hdr-cell">Gender</td>
+            <td class="hdr-cell">Product Name</td>
+            <td class="hdr-cell">Description</td>
+            <td class="hdr-cell">Price</td>
+            <td class="hdr-cell">Category</td>
+            <td class="hdr-cell">Actions</td>
+        </tr>
+          <!--------------------------- Table Contents ------------------------------------->
+          <% for(let i = 0; i < data.length; i++) { %>
+            <tr id="">
+                <td><%= data[i].id %></td>
+                <td><%= data[i].league %></td>
+                <td><%= data[i].team %></td>
+                <td><%= data[i].gender %></td>
+                <td><%= data[i].product_name %></td>
+                <td><%= data[i].product_desc %></td>
+                <td><%= data[i].price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                <td><%= data[i].category %></td>
+                <td class="actions">
+                    <a href="/admin-nfl/view/<%=data[i].id %>" class="btn btn-primary"> View</a> 
+                    <a href="/admin-nfl/update/<%=data[i].id %>" class="btn btn-info"> Update </a> 
+                    <a href="/admin-nfl/delete/<%=data[i].id %>" class="btn btn-danger"> Delete </a> 
+                </td>
+            </tr>
+        <% } %>
+    </table>
+    <% }else{ %>
+        <center>
+            <h2>No Products Available</h2>
+        </center>
+    <%} %>
+    <div>

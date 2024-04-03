@@ -1,0 +1,16 @@
+<%- include('../../partials/header-admin'); %>
+<h2 class="header-title">View Product</h2>
+<a href="/admin/create" class="btn btn-primary">Return to Products</a>
+<input type="hidden" name="id" value="<%= data.id %>">
+<div class="view-container">
+    <% if(data.img){ %>
+      <img src="/uploads/<%= data.img %>" alt="Product Image" style="width:20%">
+      <% }else {  %>
+        <img src="/uploads/default_image.png" alt="Default Image" style="width:20%">
+     <% } %>
+     <div class="container">
+      <h4><b><%= data.product_name %></b></h4>
+      <h5><%= data.category %></h5>
+      <p><%= data.product_desc %> priced at JMD $<%= data.price %></p>
+    </div>
+  </div>

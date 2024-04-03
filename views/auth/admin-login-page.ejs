@@ -1,0 +1,29 @@
+<%- include('../partials/header'); %>
+<p class="header-title">Admin Login</p>
+<div class="admin-logo">
+    <img src="assets/logo.png" alt="">
+</div>
+<div class="login">
+<div class="full-admin-container">
+        <form action="/admin-login/login-admin-post" method="post">
+            <img src="/assets/logo-transparent-svg.svg" alt="">
+            <div class="credentials">
+                <input type="email" name="email" placeholder="Enter Email" id="email" required autocomplete="off"><br>
+                <input type="password" name="password" placeholder="Enter Password" id="password" required autocomplete="off">
+                <input type="submit" value="Login" class="btn btn-dark"> 
+            </div>
+            <div class="error-container">
+                <% if (typeof error !== 'undefined') { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                    <% } %>
+            </div>
+          
+                <a href="/user-login" >Return to User Login</a>
+        </form>
+    </div>
+</div> 
+
+
+</div>

@@ -1,0 +1,16 @@
+<%- include('../partials/header'); %>
+<h1>Register</h1>
+<form action="register-admin" method="post">
+    <input type="text" name="frst_nm" placeholder="Enter First Name" id="frst_nm" required>
+
+    <input type="text" name="lst_nm" placeholder="Enter Last Name" id="lst_nm" required>
+        <!-- font awesome icon -->
+        <i class="fas fa-user"></i>
+    </label>
+    <input type="email" name="email" placeholder="Enter Email" id="email" required autocomplete="off">
+    <label for="password">
+        <i class="fas fa-lock"></i>
+    </label>
+    <input type="password" name="password" placeholder="Enter Password" id="password" required autocomplete="off">
+    <input type="submit" value="Register" class="btn btn-success">
+</form>
