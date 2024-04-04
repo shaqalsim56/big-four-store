@@ -1,6 +1,7 @@
 *{
     margin: 0;
     font-family: "Poppins", sans-serif;
+    text-align: center;
 }
 
 :root{
@@ -179,22 +180,72 @@ table{
 
 table, td{
     border-collapse: collapse;
-    border: 2px solid #000;
+    border: 2px solid var(--gray);
     padding: 5px 9px;
     text-align: center;
     height: 40px;
     font-size: 15px;
     text-align: center;
+    align-items: center;
 }
+
+
 
 .hdr-cell{
     font-weight: bold;
     text-align: center;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.actions{
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    font-size: 5px;
+}
+
+.actions a{
+    margin: 5px;
+}
+
+.view-container{
+    margin-top: 20px;
+    /* border: 2px solid blue; */
+    display: flex;
+    width: 100%;
+}
+
+.side-image img{
+    width: 100%;
 }
 
 
+.view-content-container{
+    border: 2px solid var(--black);
+    text-align: center;
+}
 
-.actions a{
-    margin-top: 10px;
-    margin: 5px;
+
+.view-content-container p{
+    font-size: 20px;
+}
+
+.view-content-container-form{
+    border: 2px solid var(--black);
+    text-align: center;
+    width: 90%;
+}
+
+.team-image img{
+    width: 50%;
+}
+
+.header-links{
+    border: 2px solid var(--black);
+    background-color: var(--black);
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }

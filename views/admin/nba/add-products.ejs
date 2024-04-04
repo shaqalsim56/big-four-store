@@ -1,0 +1,120 @@
+<%- include('../../partials/header-admin'); %>
+
+<h1 class="header-title">Add New NBA Product</h1>
+
+<form action="create-new-nba" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <input type="text" name="league" value="NBA" readonly id="league">
+    </div>
+
+    <div class="form-group">
+        <select name="team" id="teamSelect">
+            <option value="">Please Select The NBA Team</option>
+            <option value="Atlanta Hawks" data-logo-url="/assets/teams-logos/nba/atlanta-hawks.png">Atlanta Hawks</option>
+            <option value="Boston Celtics" data-logo-url="/assets/teams-logos/nba/boston-celtics.png">Boston Celtics</option>
+            <option value="Brooklyn Nets" data-logo-url="/assets/teams-logos/nba/brooklyn-nets.png">Brooklyn Nets</option>
+            <option value="Charlotte Hornets" data-logo-url="/assets/teams-logos/nba/charlotte-hornets.png">Charlotte Hornets</option>
+            <option value="Chicago Bulls" data-logo-url="/assets/teams-logos/nba/chicago-bulls.png">Chicago Bulls</option>
+            <option value="Cleveland Cavaliers" data-logo-url="/assets/teams-logos/nba/cleveland-cavaliers.png">Cleveland Cavaliers</option>
+            <option value="Dallas Mavericks" data-logo-url="/assets/teams-logos/nba/dallas-mavericks.png">Dallas Mavericks</option>
+            <option value="Denver Nuggets" data-logo-url="/assets/teams-logos/nba/denver-nuggets.png">Denver Nuggets</option>
+            <option value="Detroit Pistons" data-logo-url="/assets/teams-logos/nba/detroit-pistons.png">Detroit Pistons</option>
+            <option value="Golden State Warriors" data-logo-url="/assets/teams-logos/nba/golden-state-warriors.png">Golden State Warriors</option>
+            <option value="Houston Rockets" data-logo-url="/assets/teams-logos/nba/houston-rockets.png">Houston Rockets</option>
+            <option value="Indiana Pacers" data-logo-url="/assets/teams-logos/nba/indiana-pacers.png">Indiana Pacers</option>
+            <option value="Los Angeles Clippers" data-logo-url="/assets/teams-logos/nba/los-angeles-clippers.png">Los Angeles Clippers</option>
+            <option value="Los Angeles Lakers" data-logo-url="/assets/teams-logos/nba/los-angeles-lakers.png">Los Angeles Lakers</option>
+            <option value="Memphis Grizzlies" data-logo-url="/assets/teams-logos/nba/memphis-grizzlies.png">Memphis Grizzlies</option>
+            <option value="Miami Heat" data-logo-url="/assets/teams-logos/nba/miami-heat.png">Miami Heat</option>
+            <option value="Milwaukee Bucks" data-logo-url="/assets/teams-logos/nba/milwaukee-bucks.png">Milwaukee Bucks</option>
+            <option value="Minnesota Timberwolves" data-logo-url="/assets/teams-logos/nba/minnesota-timberwolves.png">Minnesota Timberwolves</option>
+            <option value="New Orleans Pelicans" data-logo-url="/assets/teams-logos/nba/new-orleans-pelicans.png">New Orleans Pelicans</option>
+            <option value="New York Knicks" data-logo-url="/assets/teams-logos/nba/new-york-knicks.png">New York Knicks</option>
+            <option value="Oklahoma City Thunder" data-logo-url="/assets/teams-logos/nba/oklahoma-city-thunder.png">Oklahoma City Thunder</option>
+            <option value="Orlando Magic" data-logo-url="/assets/teams-logos/nba/orlando-magic.png">Orlando Magic</option>
+            <option value="Philadelphia 76ers" data-logo-url="/assets/teams-logos/nba/philadelphia-76ers.png">Philadelphia 76ers</option>
+            <option value="Phoenix Suns" data-logo-url="/assets/teams-logos/nba/phoenix-suns.png">Phoenix Suns</option>
+            <option value="Portland Trail Blazers" data-logo-url="/assets/teams-logos/nba/portland-trail-blazers.png">Portland Trail Blazers</option>
+            <option value="Sacramento Kings" data-logo-url="/assets/teams-logos/nba/sacramento-kings.png">Sacramento Kings</option>
+            <option value="San Antonio Spurs" data-logo-url="/assets/teams-logos/nba/san-antonio-spurs.png">San Antonio Spurs</option>
+            <option value="Toronto Raptors" data-logo-url="/assets/teams-logos/nba/toronto-raptors.png">Toronto Raptors</option>
+            <option value="Utah Jazz" data-logo-url="/assets/teams-logos/nba/utah-jazz.png">Utah Jazz</option>
+            <option value="Washington Wizards" data-logo-url="/assets/teams-logos/nba/washington-wizards.png">Washington Wizards</option>
+        </select><br><br>
+        
+        <div id="teamImage" class="team-image"></div>
+    </div>
+
+    <div class="form-group">
+        <select name="gender">
+            <option value="">Please Choose The Gender</option>
+            <option value="Mens">Mens</option>
+            <option value="Womens">Womens</option>
+            <option value="Unisex">Unisex</option>
+        </select>
+
+    <div class="form-group">
+        <input type="text" name="product_name" placeholder="Enter Product Name">
+    </div>
+    
+
+    <div class="form-group">
+       <textarea name="product_desc" id="" cols="60" rows="10" placeholder="Enter Product Description"></textarea>
+    </div>
+
+    <div class="form-group">
+        <select name="category">
+            <option value="">Please Choose The Product Category</option>
+            <option value="T-Shirt">T-Shirt</option>
+            <option value="Jersey">Jersey</option>
+            <option value="Sweatshirt">Sweatshirt</option>
+            <option value="Headwear">Headwear</option>
+            <option value="Bottoms">Bottoms</option>
+            <option value="Footwear">Footwear</option>
+            <option value="Accessories">Accessories</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input type="number" name="price" placeholder="Enter Price">
+    </div>
+
+    <div class="form-group">
+        <label for="image" id="file-upload">Upload Product Image: </label>
+        <input type="file" name="image" id="file"><br>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-secondary" value="Add New Product">
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.getElementById('teamSelect').addEventListener('change', function() {
+    var selectedTeam = this.options[this.selectedIndex];
+    var logoUrl = selectedTeam.getAttribute('data-logo-url');
+    if (logoUrl) {
+        var teamImageDiv = document.getElementById('teamImage');
+        teamImageDiv.innerHTML = `<img src="${logoUrl}" alt="Team Logo" class="team-logo">`;
+    } else {
+        document.getElementById('teamImage').innerHTML = '';
+    }
+});
+
+</script>

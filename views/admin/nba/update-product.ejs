@@ -1,0 +1,111 @@
+<%- include('../../partials/header-admin'); %>
+<h2 class="header-title">Update Product</h2>
+<input type="hidden" name="id" value="<%= data.id %>">
+<div class="view-container">
+    <div class="side-image">
+        <img src="/assets/admin-images/paul-george.png" alt="">
+    </div>
+    
+        <form action="/admin-nba/update-nba" method="post" enctype="multipart/form-data" class="view-content-container-form">
+            <input type="text" name="id" value="<%= data.id %>" hidden>
+            <div>
+                <input type="text" name="league" value="NBA" readonly id="league" hidden>
+            </div>
+        
+            <div>
+                <label for="team"><b>Team:   </b></label>
+                <select name="team" id="teamSelect">
+                    <option value="">Please Select The NBA Team</option>
+                    <option value="Atlanta Hawks" <%= data.team === "Atlanta Hawks" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/atlanta-hawks.png">Atlanta Hawks</option>
+                    <option value="Boston Celtics" <%= data.team === "Boston Celtics" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/boston-celtics.png">Boston Celtics</option>
+                    <option value="Brooklyn Nets" <%= data.team === "Brooklyn Nets" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/brooklyn-nets.png">Brooklyn Nets</option>
+                    <option value="Charlotte Hornets" <%= data.team === "Charlotte Hornets" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/charlotte-hornets.png">Charlotte Hornets</option>
+                    <option value="Chicago Bulls" <%= data.team === "Chicago Bulls" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/chicago-bulls.png">Chicago Bulls</option>
+                    <option value="Cleveland Cavaliers" <%= data.team === "Cleveland Cavaliers" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/cleveland-cavaliers.png">Cleveland Cavaliers</option>
+                    <option value="Dallas Mavericks" <%= data.team === "Dallas Mavericks" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/dallas-mavericks.png">Dallas Mavericks</option>
+                    <option value="Denver Nuggets" <%= data.team === "Denver Nuggets" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/denver-nuggets.png">Denver Nuggets</option>
+                    <option value="Detroit Pistons" <%= data.team === "Detroit Pistons" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/detroit-pistons.png">Detroit Pistons</option>
+                    <option value="Golden State Warriors" <%= data.team === "Golden State Warriors" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/golden-state-warriors.png">Golden State Warriors</option>
+                    <option value="Houston Rockets" <%= data.team === "Houston Rockets" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/houston-rockets.png">Houston Rockets</option>
+                    <option value="Indiana Pacers" <%= data.team === "Indiana Pacers" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/indiana-pacers.png">Indiana Pacers</option>
+                    <option value="Los Angeles Clippers" <%= data.team === "Los Angeles Clippers" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/los-angeles-clippers.png">Los Angeles Clippers</option>
+                    <option value="Los Angeles Lakers" <%= data.team === "Los Angeles Lakers" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/los-angeles-lakers.png">Los Angeles Lakers</option>
+                    <option value="Memphis Grizzlies" <%= data.team === "Memphis Grizzlies" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/memphis-grizzlies.png">Memphis Grizzlies</option>
+                    <option value="Miami Heat" <%= data.team === "Miami Heat" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/miami-heat.png">Miami Heat</option>
+                    <option value="Milwaukee Bucks" <%= data.team === "Milwaukee Bucks" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/milwaukee-bucks.png">Milwaukee Bucks</option>
+                    <option value="Minnesota Timberwolves" <%= data.team === "Minnesota Timberwolves" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/minnesota-timberwolves.png">Minnesota Timberwolves</option>
+                    <option value="New Orleans Pelicans" <%= data.team === "New Orleans Pelicans" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/new-orleans-pelicans.png">New Orleans Pelicans</option>
+                    <option value="New York Knicks" <%= data.team === "New York Knicks" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/new-york-knicks.png">New York Knicks</option>
+                    <option value="Oklahoma City Thunder" <%= data.team === "Oklahoma City Thunder" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/oklahoma-city-thunder.png">Oklahoma City Thunder</option>
+                    <option value="Orlando Magic" <%= data.team === "Orlando Magic" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/orlando-magic.png">Orlando Magic</option>
+                    <option value="Philadelphia 76ers" <%= data.team === "Philadelphia 76ers" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/philadelphia-76ers.png">Philadelphia 76ers</option>
+                    <option value="Phoenix Suns" <%= data.team === "Phoenix Suns" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/phoenix-suns.png">Phoenix Suns</option>
+                    <option value="Portland Trail Blazers" <%= data.team === "Portland Trail Blazers" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/portland-trail-blazers.png">Portland Trail Blazers</option>
+                    <option value="Sacramento Kings" <%= data.team === "Sacramento Kings" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/sacramento-kings.png">Sacramento Kings</option>
+                    <option value="San Antonio Spurs" <%= data.team === "San Antonio Spurs" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/san-antonio-spurs.png">San Antonio Spurs</option>
+                    <option value="Toronto Raptors" <%= data.team === "Toronto Raptors" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/toronto-raptors.png">Toronto Raptors</option>
+                    <option value="Utah Jazz" <%= data.team === "Utah Jazz" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/utah-jazz.png">Utah Jazz</option>
+                    <option value="Washington Wizards" <%= data.team === "Washington Wizards" ? 'selected' : '' %> data-logo-url="/assets/teams-logos/nba/washington-wizards.png">Washington Wizards</option>
+                </select><br><br>
+                                
+                <div id="teamImage" class="team-image"></div>
+            </div>
+        
+            <div>
+                <label for="gender"><b>Gender: </b></label>
+                <select name="gender">
+                    <option value="">Please Choose The Gender</option>
+                    <option value="Mens" <%= data.gender === "Mens" ? 'selected' : '' %>>Mens</option>
+                    <option value="Womens" <%= data.gender === "Womens" ? 'selected' : '' %>>Womens</option>
+                    <option value="Unisex" <%= data.gender === "Unisex" ? 'selected' : '' %>>Unisex</option>
+                </select>
+            </div>
+            
+        
+            <div>
+                <label for="product_name"><b>Name of Product:   </b></label>
+                <input type="text" name="product_name" value="<%= data.product_name %>" style="width: 60%; margin-bottom: 20px;"> 
+            </div>
+            
+        
+            <div>
+                <label for="product_desc"><b>Product Description:   </b></label><br>
+               <textarea name="product_desc" id="" cols="60" rows="10"><%= data.product_desc %></textarea>
+            </div>
+        
+            <div>
+                <label for="category"><b>Category:   </b></label>
+                <select name="category">
+                    <option value="">Please Choose The Product Category</option>
+                    <option value="T-Shirt" <%= data.category === "T-Shirt" ? 'selected' : '' %>>T-Shirt</option>
+                    <option value="Jersey" <%= data.category === "Jersey" ? 'selected' : '' %>>Jersey</option>
+                    <option value="Sweatshirt" <%= data.category === "Sweatshirt" ? 'selected' : '' %>>Sweatshirt</option>
+                    <option value="Headwear" <%= data.category === "Headwear" ? 'selected' : '' %>>Headwear</option>
+                    <option value="Bottoms" <%= data.category === "Bottoms" ? 'selected' : '' %>>Bottoms</option>
+                    <option value="Footwear" <%= data.category === "Footwear" ? 'selected' : '' %>>Footwear</option>
+                    <option value="Accessories" <%= data.category === "Accessories" ? 'selected' : '' %>>Accessories</option>
+                </select>
+            </div>
+            
+        
+            <div>
+                <label for="price"><b> Product Price (JMD):   </b></label>
+                <input type="number" name="price" value="<%= data.price %>" style="width: 40%;">
+            </div>
+        
+            <div>
+                <label for="image" id="file-upload"><b>Upload Product Image: </b></label>
+                <input type="file" name="image" id="file" style="width: 40%;"><br>
+            </div>
+        
+            
+            <div>
+                <input type="submit" class="btn btn-success" value="Update Product">
+            </div>
+        </form>
+      
+      <div class="side-image">
+        <img src="/assets/admin-images/devin-booker.png" alt="">
+      </div>
+</div>
+<script src="/scripts/updateTeamLogo.js"></script>

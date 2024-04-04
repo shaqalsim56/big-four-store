@@ -81,7 +81,7 @@ nflRouter.post('/create-new-nfl', async (req, res)=>{
     res.redirect('/admin-nfl')
 })
 
-//View Products Page
+//Render View Products Page
 nflRouter.get('/view/:id', async (request, response) => {
     const id = request.params.id;
     const view = await getNFLProduct(id);
@@ -90,3 +90,61 @@ nflRouter.get('/view/:id', async (request, response) => {
         title: 'View Product'
     });
 });
+
+//Render Update Page
+nflRouter.get('/update/:id', async(request, respond)=>{
+    const id = request.params.id;
+    const view = await getNFLProduct(id);
+    respond.render('admin/nfl/update-product',{
+        data: view, title: 'Update Product'
+    })
+})
+
+//Update Product Post
+nflRouter.post('/update-nfl', async (req, res)=>{
+    const nflObject= new Object();
+    const id = req.body.id;
+    let vFile = ' ';
+    if (req.files){
+        vFile = `${getRandomHexValue(8)}_${req.files.image.name}`
+    }else{
+        const retInfo = await getNFLProduct(id);
+       vFile = retInfo.img
+   }
+
+    nflObject.id = req.body.id;
+    nflObject.league = req.body.league;
+    nflObject.team = req.body.team;
+    nflObject.gender = req.body.gender;
+    nflObject.product_name = req.body.product_name;
+    nflObject.product_desc = req.body.product_desc;
+    nflObject.img = vFile;
+    nflObject.price= req.body.price;
+    nflObject.category= req.body.category;
+
+    if(req.files){
+        req.files. image.mv('./uploads/' + vFile);
+    }
+    const result = await updateNFLProduct(nflObject);
+
+    res.redirect('/admin-nfl')
+})
+
+
+//Render Delete Products Page
+nflRouter.get('/delete/:id', async (request, response) => {
+    const id = request.params.id;
+    const view = await getNFLProduct(id);
+    response.render('admin/nfl/delete-product', {
+        data: view,
+        title: 'Delete Product'
+    });
+});
+
+//Delete Post
+nflRouter.post('/delete-nfl', async (req, res)=>{
+    const id = req.body.id;
+    const result = await deleteNFLProduct(id);
+
+    res.redirect('/admin-nfl')
+})

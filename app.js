@@ -16,6 +16,7 @@ import { homepageRoute } from './routes/homepageRoute.js'
 import { adminLogin } from './routes/adminLogin.js'
 import { adminRouter } from './routes/adminHomeRoute.js'
 import { nflRouter } from './routes/nfl-routing/nflCRUDRoute.js'
+import { nbaRouter } from './routes/nba-routing/nbaCRUDRoute.js'
 
 
 //Configuartions
@@ -54,6 +55,7 @@ app.use('/', homepageRoute);
 app.use('/admin-login', adminLogin)
 app.use('/admin', adminRouter)
 app.use('/admin-nfl', nflRouter)
+app.use('/admin-nba', nbaRouter)
 
 //Handle form field values from method=post
 app.use(express.urlencoded({ extended: true }));

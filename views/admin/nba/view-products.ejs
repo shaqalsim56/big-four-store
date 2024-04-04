@@ -1,9 +1,10 @@
 <%- include('../../partials/header-admin'); %>
 <div class="header-links">
-    <a href="/admin-nfl/add-nfl-product" class="btn btn-outline-light">Add New NFL Product</a>
+    <a href="/admin-nba/add-nba-product" class="btn btn-outline-light">Add New NBA Product</a>
     <a href="/admin" class="btn btn-outline-light">Return To Admin Dashboard</a>
     <a href="/admin-login/logout" class="btn btn-outline-light">Logout</a>
 </div>
+
 <% if(data.length > 0) {%>
     <table>
         <!---------- Column Name  ---------->
@@ -30,9 +31,9 @@
                 <td><%= data[i].price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
                 <td><%= data[i].category %></td>
                 <td class="actions">
-                    <a href="/admin-nfl/view/<%=data[i].id %>" class="btn btn-primary"> View</a> 
-                    <a href="/admin-nfl/update/<%=data[i].id %>" class="btn btn-info"> Update </a> 
-                    <a href="/admin-nfl/delete/<%=data[i].id %>" class="btn btn-danger"> Delete </a> 
+                    <a href="/admin-nba/view/<%=data[i].id %>"  class="btn btn-outline-dark btn-sm"> View</a> 
+                    <a href="/admin-nba/update/<%=data[i].id %>" class="btn btn-outline-dark btn-sm"> Update </a> 
+                    <a href="/admin-nba/delete/<%=data[i].id %>" class="btn btn-outline-dark btn-sm"> Delete </a> 
                 </td>
             </tr>
         <% } %>

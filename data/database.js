@@ -39,8 +39,10 @@ export const createNFLProduct = async (nflObject) => {
 
 // Update NFL Product
 export const updateNFLProduct = async(nflObject)=>{
-    const [results] = await pool.query(`UPDATE  nfl_products SET league = ?, team = ?, gender = ?, product_name = ?, product_desc, = ?, img = ?, price = ?, category = ?   WHERE id = ?`,
-    nflObject.league, nflObject.team, nflObject.gender, nflObject.product_name, nflObject.product_desc, nflObject.img, nflObject.price, nflObject.category, nflObject.id )
+    const [results] = await pool.query(`UPDATE nfl_products SET league = ?, team = ?, gender = ?, product_name = ?, product_desc = ?, img = ?, price = ?, category = ? WHERE id = ?`,
+    [nflObject.league, nflObject.team, nflObject.gender, nflObject.product_name, nflObject.product_desc, nflObject.img, nflObject.price, nflObject.category, nflObject.id]
+);
+
     const rows = results[0];
     return rows;
 }
@@ -70,18 +72,21 @@ export const getNBAProduct = async(id)=>{
     return rows;
 }
 
-// Create New NBA Product
-export const createNBAProduct = async(nbaObject)=>{
-    const [results] = await pool.query(`INSERT INTO nba_products (league, team, gender, product_name, product_desc, img, price, category)  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-    nbaObject.league, nbaObject.team, nbaObject.gender, nbaObject.product_name, nbaObject.product_desc, nbaObject.img, nbaObject.price, nbaObject.category )
+export const createNBAProduct = async (nbaObject) => {
+    const [results] = await pool.query(
+        `INSERT INTO nba_products (league, team, gender, product_name, product_desc, img, price, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [nbaObject.league, nbaObject.team, nbaObject.gender, nbaObject.product_name, nbaObject.product_desc, nbaObject.img, nbaObject.price, nbaObject.category]
+    );
     const rows = results[0];
     return rows;
-}
+};
 
 // Update NBA Product
 export const updateNBAProduct = async(nbaObject)=>{
-    const [results] = await pool.query(`UPDATE  nba_products SET league = ?, team = ?, gender = ?, product_name = ?, product_desc, = ?, img = ?, price = ?, category = ?   WHERE id = ?`,
-    nbaObject.league, nbaObject.team, nbaObject.gender, nbaObject.product_name, nbaObject.product_desc, nbaObject.img, nbaObject.price, nbaObject.category, nbaObject.id )
+    const [results] = await pool.query(`UPDATE nba_products SET league = ?, team = ?, gender = ?, product_name = ?, product_desc = ?, img = ?, price = ?, category = ? WHERE id = ?`,
+    [nbaObject.league, nbaObject.team, nbaObject.gender, nbaObject.product_name, nbaObject.product_desc, nbaObject.img, nbaObject.price, nbaObject.category, nbaObject.id]
+);
+
     const rows = results[0];
     return rows;
 }

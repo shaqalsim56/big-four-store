@@ -1,0 +1,50 @@
+<%- include('../../partials/header-admin'); %>
+<h2 class="header-title">Delete Product</h2>
+<input type="hidden" name="id" value="<%= data.id %>">
+<div class="view-container">
+    <div class="side-image">
+        <img src="/assets/admin-images/ja-morant.png" alt="">
+    </div>
+    
+
+    <form action="/admin-nba/delete-nba" method="post" enctype="multipart/form-data" class="view-content-container">
+       <input type="text" name="id" value="<%= data.id %>" hidden>
+
+       <div>
+        <h2><%= data.product_name %></h2> 
+       </div>
+       <% if(data.img){ %>
+        <img src="/uploads/<%= data.img %>" alt="Product Image" style="width:50%">
+        <% }else {  %>
+          <img src="/uploads/default_image.png" alt="Default Image" style="width:20%">
+       <% } %>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Product?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Do you want to delete <b><%= data.product_name %></b> from the database?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    <div style="text-align: center;">
+      <button class="btn btn-danger"data-toggle="modal" data-target="#exampleModal" style="margin-left: -750px; margin-top: 550px;">Delete Product</button>
+  </div>
+      
+      <div class="side-image">
+        <img src="/assets/admin-images/luka-doncic.png" alt="">
+      </div>
+</div>
+<%- include('../../partials/footer'); %>
