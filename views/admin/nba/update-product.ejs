@@ -94,13 +94,20 @@
             </div>
         
             <div>
-                <label for="image" id="file-upload"><b>Upload Product Image: </b></label>
+                <label for="image" id="file-upload"><b>Upload New Product Image: </b></label>
                 <input type="file" name="image" id="file" style="width: 40%;"><br>
             </div>
-        
+            <% if(data.img){ %>
+                <img src="/uploads/<%= data.img %>" alt="Product Image" style="width:30%">
+                <% }else {  %>
+                  <img src="/uploads/default_image.png" alt="Default Image" style="width:20%">
+               <% } %>
             
             <div>
-                <input type="submit" class="btn btn-success" value="Update Product">
+                <input type="submit" class="btn btn-outline-dark" value="Update Product">
+            </div><br>
+            <div>
+                <a href="/admin-nba" class="btn btn-dark">Return to Products</a>
             </div>
         </form>
       

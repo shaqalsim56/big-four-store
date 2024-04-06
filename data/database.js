@@ -72,6 +72,27 @@ export const getNBAProduct = async(id)=>{
     return rows;
 }
 
+// View NBA products by category
+export const getNBAProductsByCategory = async(category)=>{
+    const results = await pool.query(`SELECT * FROM nba_products WHERE category = ?`, [category])
+    const rows = results[0];
+    return rows;
+}
+
+export const getNBAProductsByTeam = async (team) => {
+    const results = await pool.query(`SELECT * FROM nba_products WHERE team = ?`, [team]);
+    const rows = results[0];
+    return rows;
+};
+
+// Update your database.js to handle filtering by both team and category
+export const getNBAProductsByTeamAndCategory = async (team, category) => {
+    const results = await pool.query(`SELECT * FROM nba_products WHERE team = ? AND category = ?`, [team, category]);
+    const rows = results[0];
+    return rows;
+};
+
+//Create New NBA Product 
 export const createNBAProduct = async (nbaObject) => {
     const [results] = await pool.query(
         `INSERT INTO nba_products (league, team, gender, product_name, product_desc, img, price, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,

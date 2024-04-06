@@ -15,21 +15,59 @@
 <body>
     <div class="topnav">
         <img src="./assets/logo.png" alt="" onclick="location.href=('/')" style="cursor: pointer;">
-        <input type="text" name="" id="" placeholder="Search for your NFL, NBA, MLB & NHL gear here">
+        <input type="text" name="" id="" placeholder="Search">
     </div>
 <div style="background-color: #000;">
 t
 </div>
 <div class="categories">
-    <a href="#">NFL</a>
-    <a href="#">NBA</a>
-    <a href="#">MLB</a>
-    <a href="#">NHL</a>
-    <a href="#">T-Shirts</a>
-    <a href="#">Jerseys</a>
-    <a href="#">Sweatshirts</a>
-    <a href="#">Headwear</a>
-    <a href="#">Bottoms</a>
-    <a href="#">Footwear</a>
-    <a href="#">Accessories</a>
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Filter By Team
+        </a>
+      
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/admin-nba/team/Atlanta Hawks">Atlanta Hawks</a>
+     <a class="dropdown-item" href="/admin-nba/team/Boston Celtics">Boston Celtics</a>
+     <a class="dropdown-item" href="/admin-nba/team/brooklyn-nets">Brooklyn Nets</a>
+     <a class="dropdown-item" href="/admin-nba/team/Brooklyn Nets">Brooklyn Nets</a>
+    <a class="dropdown-item" href="/admin-nba/team/Charlotte Hornets">Charlotte Hornets</a>
+    <a class="dropdown-item" href="/admin-nba/team/Chicago Bulls">Chicago Bulls</a>
+    <a class="dropdown-item" href="/admin-nba/team/Cleveland Cavaliers">Cleveland Cavaliers</a>
+    <a class="dropdown-item" href="/admin-nba/team/Dallas Mavericks">Dallas Mavericks</a>
+    <a class="dropdown-item" href="/admin-nba/team/Denver Nuggets">Denver Nuggets</a>
+    <a class="dropdown-item" href="/admin-nba/team/Detroit Pistons">Detroit Pistons</a>
+    <a class="dropdown-item" href="/admin-nba/team/Golden State Warriors">Golden State Warriors</a>
+    <a class="dropdown-item" href="/admin-nba/team/Houston Rockets">Houston Rockets</a>
+    <a class="dropdown-item" href="/admin-nba/team/Indiana Pacers">Indiana Pacers</a>
+    <a class="dropdown-item" href="/admin-nba/team/Los Angeles Clippers">Los Angeles Clippers</a>
+    <a class="dropdown-item" href="/admin-nba/team/Los Angeles Lakers">Los Angeles Lakers</a>
+    <a class="dropdown-item" href="/admin-nba/team/Memphis Grizzlies">Memphis Grizzlies</a>
+    <a class="dropdown-item" href="/admin-nba/team/Miami Heat">Miami Heat</a>
+    <a class="dropdown-item" href="/admin-nba/team/Milwaukee Bucks">Milwaukee Bucks</a>
+    <a class="dropdown-item" href="/admin-nba/team/Minnesota Timberwolves">Minnesota Timberwolves</a>
+    <a class="dropdown-item" href="/admin-nba/team/New Orleans Pelicans">New Orleans Pelicans</a>
+    <a class="dropdown-item" href="/admin-nba/team/New York Knicks">New York Knicks</a>
+    <a class="dropdown-item" href="/admin-nba/team/Oklahoma City Thunder">Oklahoma City Thunder</a>
+    <a class="dropdown-item" href="/admin-nba/team/Orlando Magic">Orlando Magic</a>
+    <a class="dropdown-item" href="/admin-nba/team/Philadelphia 76ers">Philadelphia 76ers</a>
+    <a class="dropdown-item" href="/admin-nba/team/Phoenix Suns">Phoenix Suns</a>
+    <a class="dropdown-item" href="/admin-nba/team/Portland Trail Blazers">Portland Trail Blazers</a>
+    <a class="dropdown-item" href="/admin-nba/team/Sacramento Kings">Sacramento Kings</a>
+    <a class="dropdown-item" href="/admin-nba/team/San Antonio Spurs">San Antonio Spurs</a>
+    <a class="dropdown-item" href="/admin-nba/team/Toronto Raptors">Toronto Raptors</a>
+    <a class="dropdown-item" href="/admin-nba/team/Utah Jazz">Utah Jazz</a>
+    <a class="dropdown-item" href="/admin-nba/team/Washington Wizards">Washington Wizards</a>
+          </div>
+      </div>
+
+    <div class="category-filters">
+        <a href="/admin-nba" class="btn btn-outline-dark">All Products</a>
+        <a href="/admin-nba/category/jersey" class="btn btn-outline-dark">Jerseys</a>
+        <a href="/admin-nba/category/accessories" class="btn btn-outline-dark">Accessories</a>
+        <a href="/admin-nba/category/t-shirt" class="btn btn-outline-dark">T-Shirts</a>
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

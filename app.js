@@ -23,6 +23,9 @@ import { nbaRouter } from './routes/nba-routing/nbaCRUDRoute.js'
 const port = 4404;
 const app = express();
 
+ //Results Per Page For Pagination
+ export const resultsPerPage = 5;
+
 //Session Middleware
 app.use(session({
     secret: 'hiiiFashion Store',
@@ -65,3 +68,4 @@ app.use(express.urlencoded({ extended: true }));
 app.listen(port, () => {
     console.log(`The Server is Running On Port ${port}`);
 });
+

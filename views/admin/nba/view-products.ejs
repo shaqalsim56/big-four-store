@@ -43,4 +43,39 @@
             <h2>No Products Available</h2>
         </center>
     <%} %>
-    <div>
+    <div><br>
+
+        <div class="break"></div>
+
+        <div class="page-control">
+            <% if (category === 'jersey' || category === 'tshirt' || category === 'accessories') { %>
+                <% const iterator = Math.max(1, page - 5); %>
+                <% const endingLink = Math.min(iterator + 3, numberOfPages); %>
+                
+                <% if (page > 1) { %>
+                    <a href="/admin-nba/category/<%= category %>?page=<%= page - 1 %>" class="btn btn-outline-dark">Previous Page</a>
+                <% } %>
+                
+                <% for (let j = iterator; j <= endingLink; j++) { %>
+                    <a href="/admin-nba/category/<%= category %>?page=<%= j %>" class="<%= j === page ? 'selectedLink' : '' %> btn btn-outline-dark"><%= j %></a>
+                <% } %>
+                
+                <% if (page < numberOfPages) { %>
+                    <a href="/admin-nba/category/<%= category %>?page=<%= page + 1 %>" class="btn btn-outline-dark">Next Page</a>
+                <% } %>
+            <% } else { %>
+                <% if (page > 1) { %>
+                    <a href="/admin-nba/?page=<%= page - 1 %>" class="btn btn-outline-dark">Previous Page</a>
+                <% } %>
+                
+                <% for (let j = 1; j <= numberOfPages; j++) { %>
+                    <a href="/admin-nba/?page=<%= j %>" class="<%= j === page ? 'selectedLink' : '' %> btn btn-outline-dark"><%= j %></a>
+                <% } %>
+                
+                <% if (page < numberOfPages) { %>
+                    <a href="/admin-nba/?page=<%= page + 1 %>" class="btn btn-outline-dark">Next Page</a>
+                <% } %>
+            <% } %>
+        </div>
+        
+        

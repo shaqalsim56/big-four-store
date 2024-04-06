@@ -249,3 +249,16 @@ table, td{
     justify-content: space-between;
     margin-bottom: 20px;
 }
+
+.page-control{
+    /* border: 2px solid red; */
+    padding: 30px;
+    text-align: center;
+}
+
+.page-control a{
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    margin: 15px;
+}

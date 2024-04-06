@@ -1,10 +1,13 @@
 import express, { response } from 'express';
 export const nbaRouter = express.Router();
-import { getNBAProducts, getNBAProduct, createNBAProduct, deleteNBAProduct, updateNBAProduct } from '../../data/database.js';
+import { getNBAProducts, getNBAProduct, createNBAProduct, deleteNBAProduct, updateNBAProduct, getNBAProductsByCategory, getNBAProductsByTeam } from '../../data/database.js';
 import fileUpload from 'express-fileupload';
 import { getRandomHexValue } from '../../utils/utils.js';
 import session from 'express-session';
 import bodyParser from 'body-parser';
+import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+import { resultsPerPage } from '../../app.js';
 
 let loggedin = false;
 
@@ -44,12 +47,135 @@ nbaRouter.use(requireLogin);
 
 //Render Products Page 
 nbaRouter.get('/', async(request, response)=>{
+    const category = request.params.category;
     const view = await getNBAProducts();
+    const numberOfResults = view.length;
+    const numberOfPages = Math.ceil(numberOfResults / resultsPerPage);
+    let page = request.query.page ? Number(request.query.page) : 1;
+
+        //Redirecting If Page Number is Too Much
+        if(page > numberOfPages){
+            response.redirect('/admin-nba?page = ' +encodeURIComponent(numberOfPages));
+        }else if(page < 1){
+            response.redirect('/admin-nba?page='+encodeURIComponent('1'));
+        }
+         //Establish SQL Limit Starting Number
+    const startingLimit = (page - 1) * resultsPerPage;
+    const sql = `SELECT * FROM nba_products LIMIT ${startingLimit}, ${resultsPerPage}`;
+
+    try {
+        // Create a connection
+        const connection = await mysql.createConnection({   
+            host: process.env.DB_HOST,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_DATABASE });
+      
+        // Execute the query with placeholders
+        const [view] = await connection.query(sql, [startingLimit, resultsPerPage]);
+      
+        // Process the result here
+      
+        let iterator = (page - 5) < 1 ? 1 : page - 5;
+        let endingLink = (iterator + 3) <= numberOfPages ? (iterator + 3) : page +
+         (numberOfPages - page);
+
+         if(endingLink < (page + 4)){
+            iterator -= (page + 4) - numberOfPages;
+         }
+
     response.render('admin/nba/view-products', {
         data: view,
-        title: 'View NBA Products'
+        title: 'View NBA Products',
+        page, iterator, endingLink, numberOfPages, category
     })
+            // Close the connection
+            await connection.end();
+        } catch (error) {
+          console.error('Error executing query:', error);
+        }
 })
+
+nbaRouter.get('/category/:category', async (request, response) => {
+    const category = request.params.category;
+    const page = request.query.page ? Number(request.query.page) : 1;
+    const resultsPerPage = 10; 
+
+    // Retrieve products based on the category
+    const products = await getNBAProductsByCategory(category);
+
+    // Pagination
+    const numberOfResults = products.length;
+    const numberOfPages = Math.ceil(numberOfResults / resultsPerPage);
+
+    // Calculate iterator and endingLink for pagination
+    let iterator = Math.max(1, page - 5);
+    let endingLink = Math.min(iterator + 3, numberOfPages);
+
+    // Adjust iterator if endingLink exceeds numberOfPages
+    if (endingLink < page + 4) {
+        iterator -= (page + 4) - numberOfPages;
+    }
+
+    // Slice products based on pagination parameters
+    const startingIndex = (page - 1) * resultsPerPage;
+    const paginatedProducts = products.slice(startingIndex, startingIndex + resultsPerPage);
+
+    // Render the view with filtered products and pagination parameters
+    response.render('admin/nba/view-products', {
+        data: paginatedProducts,
+        title: `View NBA Products - ${category} Category`,
+        page,
+        iterator,
+        endingLink,
+        numberOfPages,
+        category
+    });
+});
+
+// Filter by Team
+nbaRouter.get('/team/:team', async (request, response) => {
+    const team = request.params.team;
+    const category = request.params.category;
+    const page = request.query.page ? Number(request.query.page) : 1;
+    const resultsPerPage = 10;
+
+    // Retrieve products based on the team
+    const products = await getNBAProductsByTeam(team);
+
+    // Pagination
+    const numberOfResults = products.length;
+    const numberOfPages = Math.ceil(numberOfResults / resultsPerPage);
+
+    // Calculate iterator and endingLink for pagination
+    let iterator = Math.max(1, page - 5);
+    let endingLink = Math.min(iterator + 3, numberOfPages);
+
+    // Adjust iterator if endingLink exceeds numberOfPages
+    if (endingLink < page + 4) {
+        iterator -= (page + 4) - numberOfPages;
+    }
+
+    // Slice products based on pagination parameters
+    const startingIndex = (page - 1) * resultsPerPage;
+    const paginatedProducts = products.slice(startingIndex, startingIndex + resultsPerPage);
+
+    // Render the view with filtered products and pagination parameters
+    response.render('admin/nba/view-products', {
+        data: paginatedProducts,
+        title: `View NBA Products - ${team} Team`,
+        page,
+        iterator,
+        endingLink,
+        numberOfPages,
+        team,
+        category
+    });
+});
+
+
+
+
 
 nbaRouter.get('/add-nba-product', async(request, response)=>{
     response.render('admin/nba/add-products', {
